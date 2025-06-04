@@ -1,0 +1,153 @@
+package com.example.gonuts.screens.home_screen.components
+
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextDecoration
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import com.example.gonuts.R
+import com.example.gonuts.ui.theme.Inter
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material3.Icon
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
+
+
+data class DountsDetails(
+    val image: Int,
+    val color: Color,
+    val name: String,
+    val description: String ,
+    val newPrice : Int ,
+    val oldPrice : Int
+)
+
+@Composable
+fun DountsItem(
+    dountsDetails : DountsDetails
+){
+    Box{
+        Card(
+            modifier = Modifier
+                .height(325.dp)
+                .width(195.dp)
+                .padding(end = 25.dp),
+            colors = CardDefaults.cardColors(
+                containerColor = dountsDetails.color
+            ),
+            shape = RoundedCornerShape(20.dp)
+        ) {
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(
+                        top = 160.dp,
+                        start = 20.dp ,
+                        end = 15.dp ,
+                        bottom = 15.dp
+                    ),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                Text(
+                    dountsDetails.name,
+                    color = Color.Black,
+                    fontSize = 16.sp,
+                    fontWeight = FontWeight.Medium,
+                    fontFamily = Inter
+                )
+                Spacer(Modifier.height(9.dp))
+                Text(
+                    text = dountsDetails.description,
+                    color = Color(0xFF000000).copy(alpha = .6f),
+                    fontSize = 12.sp,
+                    fontWeight = FontWeight.Normal,
+                    fontFamily = Inter,
+                    letterSpacing = .5.sp
+                )
+                Spacer(Modifier.height(15.dp))
+                Row(
+                    modifier = Modifier
+                        .align(Alignment.End) ,
+                    verticalAlignment = Alignment.Bottom
+                ) {
+                    Text(
+                        text = "$${dountsDetails.oldPrice}",
+                        fontSize = 14.sp,
+                        fontWeight = FontWeight.SemiBold,
+                        fontFamily = Inter,
+                        color = Color.Black.copy(alpha = .6f),
+                        textDecoration = TextDecoration.LineThrough
+                    )
+                    Spacer(Modifier.width(5.dp))
+                    Text(
+                        text = "$${dountsDetails.newPrice}",
+                        fontSize = 22.sp,
+                        fontWeight = FontWeight.SemiBold,
+                        fontFamily = Inter,
+                        color = Color.Black
+                    )
+                }
+            }
+        }
+
+        Box(
+            modifier = Modifier
+                .align(Alignment.TopStart)
+                .padding(top = 15.dp, start = 15.dp)
+                .clip(CircleShape)
+                .size(35.dp)
+                .background(Color.White)
+        ) {
+            Icon(
+                modifier = Modifier.align(Alignment.Center),
+                painter = painterResource(R.drawable.vector),
+                contentDescription = "favourite icon",
+                tint = Color(0xFFFF7074)
+            )
+        }
+
+        Image(
+            modifier = Modifier
+                .align(Alignment.TopStart)
+                .padding(start = 40.dp),
+            painter = painterResource(id = dountsDetails.image),
+            contentDescription = "dounts image",
+            contentScale = ContentScale.FillBounds
+        )
+    }
+}
+
+@Composable
+@Preview(showBackground = true, showSystemUi = true)
+fun DountsItemPreview(){
+    DountsItem(
+        dountsDetails = DountsDetails(
+            image =  R.drawable.dounts1 ,
+            color = Color(0xFFD7E4F6) ,
+            name = "Strawberry Wheel" ,
+            description = "These Baked Strawberry Donuts are filled with fresh strawberries..." ,
+            newPrice = 16 ,
+            oldPrice = 20
+        )
+    )
+}

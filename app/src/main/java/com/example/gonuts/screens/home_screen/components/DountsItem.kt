@@ -2,6 +2,7 @@ package com.example.gonuts.screens.home_screen.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -31,6 +32,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
 
 
 data class DountsDetails(
@@ -40,6 +43,33 @@ data class DountsDetails(
     val description: String ,
     val newPrice : Int ,
     val oldPrice : Int
+)
+
+val dounts: List<DountsDetails> = listOf(
+    DountsDetails(
+        image =  R.drawable.donut1 ,
+        color = Color(0xFFD7E4F6) ,
+        name = "Strawberry Wheel" ,
+        description = "These Baked Strawberry Donuts are filled with fresh strawberries..." ,
+        newPrice = 16 ,
+        oldPrice = 20
+    ),
+    DountsDetails(
+        image =  R.drawable.donut1 ,
+        color = Color(0xFFFFC7D0) ,
+        name = "Chocolate Glaze" ,
+        description = "Moist and fluffy baked chocolate donuts full of chocolate flavor." ,
+        newPrice = 16 ,
+        oldPrice = 20
+    ),
+    DountsDetails(
+        image =  R.drawable.donut1 ,
+        color = Color(0xFFD7E4F6) ,
+        name = "Strawberry Wheel" ,
+        description = "These Baked Strawberry Donuts are filled with fresh strawberries..." ,
+        newPrice = 16 ,
+        oldPrice = 20
+    )
 )
 
 @Composable
@@ -148,11 +178,26 @@ fun DountsItem(
     }
 }
 
+@Composable
+fun DountsItems(){
+    LazyRow(
+        modifier = Modifier.fillMaxWidth(),
+        horizontalArrangement = Arrangement.spacedBy(10.dp),
+    ) {
+        items(dounts) { item ->
+            DountsItem(
+                dountsDetails = item,
+            )
+        }
+    }
+}
+
 
 @Composable
 @Preview(showBackground = true, showSystemUi = true)
 fun DountsItemPreview(){
-    DountsItem(
+    DountsItems()
+   /* DountsItem(
         dountsDetails = DountsDetails(
             image =  R.drawable.donut1 ,
             color = Color(0xFFD7E4F6) ,
@@ -161,6 +206,6 @@ fun DountsItemPreview(){
             newPrice = 16 ,
             oldPrice = 20
         )
-    )
+    )*/
 }
 

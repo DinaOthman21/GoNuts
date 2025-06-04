@@ -45,7 +45,6 @@ fun SplashColumn(){
             fontFamily = Inter,
             fontWeight = FontWeight.Medium,
             modifier = Modifier.fillMaxWidth(),
-            lineHeight = 18.sp
         )
         Spacer(Modifier.height(60.dp))
         SplashButton()

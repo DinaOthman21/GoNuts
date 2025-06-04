@@ -6,6 +6,8 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -16,7 +18,6 @@ import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
@@ -28,6 +29,7 @@ import com.example.gonuts.R
 import com.example.gonuts.ui.theme.Inter
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Icon
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
@@ -46,24 +48,29 @@ data class DountsDetails(
 fun DountsItem(
     dountsDetails : DountsDetails
 ){
-    Box{
+    Box(
+        modifier = Modifier
+            .width(229.dp)
+            .height(325.dp)
+    ){
         Card(
             modifier = Modifier
-                .height(325.dp)
-                .width(195.dp)
-                .padding(end = 25.dp),
+                .width(193.dp)
+                .fillMaxHeight(),
             colors = CardDefaults.cardColors(
                 containerColor = dountsDetails.color
             ),
             shape = RoundedCornerShape(20.dp)
         ) {
+            Box(modifier = Modifier.fillMaxSize()) {
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
+                    .align(Alignment.BottomCenter)
                     .padding(
                         top = 160.dp,
-                        start = 20.dp ,
-                        end = 15.dp ,
+                        start = 20.dp,
+                        end = 15.dp,
                         bottom = 15.dp
                     ),
                 horizontalAlignment = Alignment.CenterHorizontally
@@ -87,7 +94,7 @@ fun DountsItem(
                 Spacer(Modifier.height(15.dp))
                 Row(
                     modifier = Modifier
-                        .align(Alignment.End) ,
+                        .align(Alignment.End),
                     verticalAlignment = Alignment.Bottom
                 ) {
                     Text(
@@ -109,6 +116,7 @@ fun DountsItem(
                 }
             }
         }
+        }
 
         Box(
             modifier = Modifier
@@ -128,8 +136,8 @@ fun DountsItem(
 
         Image(
             modifier = Modifier
-                .align(Alignment.TopStart)
-                .padding(start = 40.dp),
+                .align(Alignment.TopEnd)
+                .padding(top = 25.dp),
             painter = painterResource(id = dountsDetails.image),
             contentDescription = "dounts image",
             contentScale = ContentScale.FillBounds
@@ -137,12 +145,13 @@ fun DountsItem(
     }
 }
 
+
 @Composable
 @Preview(showBackground = true, showSystemUi = true)
 fun DountsItemPreview(){
     DountsItem(
         dountsDetails = DountsDetails(
-            image =  R.drawable.dounts1 ,
+            image =  R.drawable.donut1 ,
             color = Color(0xFFD7E4F6) ,
             name = "Strawberry Wheel" ,
             description = "These Baked Strawberry Donuts are filled with fresh strawberries..." ,
@@ -151,3 +160,4 @@ fun DountsItemPreview(){
         )
     )
 }
+

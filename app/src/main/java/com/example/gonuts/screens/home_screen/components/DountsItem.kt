@@ -6,8 +6,6 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxHeight
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -51,87 +49,92 @@ fun DountsItem(
     Box(
         modifier = Modifier
             .width(229.dp)
-            .height(325.dp)
     ){
         Card(
             modifier = Modifier
-                .width(193.dp)
-                .fillMaxHeight(),
+                .width(193.dp) ,
             colors = CardDefaults.cardColors(
                 containerColor = dountsDetails.color
             ),
             shape = RoundedCornerShape(20.dp)
         ) {
-            Box(modifier = Modifier.fillMaxSize()) {
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .align(Alignment.BottomCenter)
-                    .padding(
-                        top = 160.dp,
-                        start = 20.dp,
-                        end = 15.dp,
-                        bottom = 15.dp
-                    ),
-                horizontalAlignment = Alignment.CenterHorizontally
             ) {
+                Box(
+                    modifier = Modifier
+                        .padding(
+                            top = 15.dp,
+                            start = 15.dp
+                        )
+                        .clip(CircleShape)
+                        .size(35.dp)
+                        .background(Color.White)
+                ) {
+                    Icon(
+                        modifier = Modifier.align(Alignment.Center),
+                        painter = painterResource(R.drawable.vector),
+                        contentDescription = "favourite icon",
+                        tint = Color(0xFFFF7074)
+                    )
+                }
                 Text(
-                    dountsDetails.name,
-                    color = Color.Black,
+                    text = dountsDetails.name,
                     fontSize = 16.sp,
+                    color = Color.Black,
                     fontWeight = FontWeight.Medium,
-                    fontFamily = Inter
+                    fontFamily = Inter,
+                    modifier = Modifier.padding(
+                        top = 162.dp,
+                        start = 20.dp
+                    )
                 )
                 Spacer(Modifier.height(9.dp))
                 Text(
                     text = dountsDetails.description,
-                    color = Color(0xFF000000).copy(alpha = .6f),
                     fontSize = 12.sp,
+                    color = Color.Black.copy(alpha = .6f),
                     fontWeight = FontWeight.Normal,
                     fontFamily = Inter,
-                    letterSpacing = .5.sp
+                    modifier = Modifier.padding(
+                        start = 20.dp,
+                        end = 16.dp
+                    )
+                        .width(156.dp),
+                    lineHeight = 16.sp,
+                    letterSpacing = 0.7.sp
                 )
-                Spacer(Modifier.height(15.dp))
+                Spacer(Modifier.height(5.dp))
                 Row(
                     modifier = Modifier
-                        .align(Alignment.End),
+                        .align(Alignment.End)
+                        .padding(
+                            end = 20.dp,
+                            bottom = 15.dp
+                        ),
                     verticalAlignment = Alignment.Bottom
                 ) {
                     Text(
                         text = "$${dountsDetails.oldPrice}",
                         fontSize = 14.sp,
+                        color = Color.Black.copy(alpha = .6f),
                         fontWeight = FontWeight.SemiBold,
                         fontFamily = Inter,
-                        color = Color.Black.copy(alpha = .6f),
-                        textDecoration = TextDecoration.LineThrough
+                        textDecoration = TextDecoration.LineThrough,
+                        lineHeight = 22.sp
                     )
                     Spacer(Modifier.width(5.dp))
                     Text(
                         text = "$${dountsDetails.newPrice}",
                         fontSize = 22.sp,
+                        color = Color.Black,
                         fontWeight = FontWeight.SemiBold,
                         fontFamily = Inter,
-                        color = Color.Black
+                        lineHeight = 22.sp,
                     )
                 }
             }
-        }
-        }
-
-        Box(
-            modifier = Modifier
-                .align(Alignment.TopStart)
-                .padding(top = 15.dp, start = 15.dp)
-                .clip(CircleShape)
-                .size(35.dp)
-                .background(Color.White)
-        ) {
-            Icon(
-                modifier = Modifier.align(Alignment.Center),
-                painter = painterResource(R.drawable.vector),
-                contentDescription = "favourite icon",
-                tint = Color(0xFFFF7074)
-            )
         }
 
         Image(
@@ -139,7 +142,7 @@ fun DountsItem(
                 .align(Alignment.TopEnd)
                 .padding(top = 25.dp),
             painter = painterResource(id = dountsDetails.image),
-            contentDescription = "dounts image",
+            contentDescription = "dount image",
             contentScale = ContentScale.FillBounds
         )
     }

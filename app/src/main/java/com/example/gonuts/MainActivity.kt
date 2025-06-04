@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import com.example.gonuts.screens.splash_screen.SplashScreen
 import com.example.gonuts.ui.theme.GoNutsTheme
 
 class MainActivity : ComponentActivity() {
@@ -12,7 +13,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             GoNutsTheme {
-
+                SplashScreen()
             }
         }
     }

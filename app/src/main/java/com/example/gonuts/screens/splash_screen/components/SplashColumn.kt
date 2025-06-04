@@ -34,7 +34,8 @@ fun SplashColumn(){
             color = Color(0xFFFF7074),
             fontFamily = Inter,
             fontWeight = FontWeight.Bold,
-              modifier = Modifier.width(193.dp),
+            modifier = Modifier.width(193.dp),
+            lineHeight = 54.sp
         )
         Spacer(Modifier.height(19.dp))
         Text(
@@ -43,7 +44,8 @@ fun SplashColumn(){
             color = Color(0xFFFF9494),
             fontFamily = Inter,
             fontWeight = FontWeight.Medium,
-             modifier = Modifier.fillMaxWidth(),
+            modifier = Modifier.fillMaxWidth(),
+            lineHeight = 18.sp
         )
         Spacer(Modifier.height(60.dp))
         SplashButton()

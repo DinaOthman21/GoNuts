@@ -3,6 +3,7 @@ package com.example.gonuts.screens.home_screen.components
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.Modifier
@@ -13,7 +14,8 @@ import com.example.gonuts.R
 @Composable
 fun BottomBar(){
     Row(
-        horizontalArrangement = Arrangement.SpaceBetween
+        horizontalArrangement = Arrangement.SpaceBetween ,
+        modifier = Modifier.fillMaxWidth()
     ){
         Image(
             painter = painterResource(R.drawable.home),

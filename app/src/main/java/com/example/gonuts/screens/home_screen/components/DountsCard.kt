@@ -1,0 +1,117 @@
+package com.example.gonuts.screens.home_screen.components
+
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
+import androidx.compose.foundation.Image
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import com.example.gonuts.R
+import com.example.gonuts.ui.theme.Inter
+
+
+data class DountCardDetails(
+    val image: Int,
+    val name: String,
+    val price : Int
+)
+
+val dountData: List<DountCardDetails> = listOf(
+    DountCardDetails(
+        image =R.drawable.small_donut1,
+        name = "Chocolate Cherry",
+        price = 22
+    ),
+    DountCardDetails(
+        image =R.drawable.small_dount2,
+        name = "Strawberry Rain",
+        price = 22
+    ),
+    DountCardDetails(
+        image =R.drawable.small_dount2,
+        name = "Strawberry ",
+        price = 22
+    )
+)
+
+@Composable
+fun DountCard(
+    dountCardDetails: DountCardDetails
+){
+    Box(
+        modifier = Modifier.width(138.dp)
+    ){
+        Card(
+            modifier = Modifier
+                .padding(top = 56.dp)
+                .height(111.dp)
+                .fillMaxWidth(),
+            colors = CardDefaults.cardColors(
+                containerColor = Color.White
+            ),
+            shape = RoundedCornerShape(
+                topStart = 20.dp,
+                topEnd = 20.dp,
+                bottomEnd = 10.dp,
+                bottomStart = 10.dp
+            )
+        ) {
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(top = 47.dp, start = 11.dp , end = 9.dp),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                Text(
+                    dountCardDetails.name,
+                    fontSize = 14.sp,
+                    color = Color.Black.copy(alpha = .6f),
+                    fontWeight = FontWeight.Medium,
+                    fontFamily = Inter
+                )
+                Spacer(Modifier.height(10.dp))
+                Text(
+                    text = "$${dountCardDetails.price}",
+                    fontSize = 14.sp,
+                    color = Color(0xFFFF7074),
+                    fontWeight = FontWeight.SemiBold,
+                    fontFamily = Inter,
+                    textAlign = TextAlign.Center,
+                )
+            }
+        }
+
+        Image(
+            painter = painterResource(id = dountCardDetails.image) ,
+            modifier = Modifier
+                .align(Alignment.TopCenter)
+                .padding(end = 11.dp),
+            contentDescription = "donut image"
+        )
+
+    }
+}
+
+@Composable
+@Preview(showBackground = true)
+fun DountsCardPreview(){
+    DountCard(
+        dountCardDetails = dountData[0]
+    )
+}

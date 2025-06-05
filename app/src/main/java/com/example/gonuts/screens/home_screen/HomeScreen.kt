@@ -70,7 +70,7 @@ fun HomeScreen() {
         BottomBar(
             modifier = Modifier
                 .align(Alignment.BottomCenter)
-                .padding(start = 15.dp, bottom = 38.dp)
+                .padding(start = 18.dp, bottom = 38.dp)
         )
     }
 }

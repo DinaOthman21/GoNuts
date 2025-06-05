@@ -2,23 +2,24 @@ package com.example.gonuts.screens.home_screen.components
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -58,6 +59,7 @@ fun DountCard(
     dountCardDetails: DountCardDetails
 ){
     Box(
+        contentAlignment = Alignment.TopCenter,
         modifier = Modifier.width(138.dp)
     ){
         Card(
@@ -65,9 +67,7 @@ fun DountCard(
                 .padding(top = 56.dp)
                 .height(111.dp)
                 .fillMaxWidth(),
-            colors = CardDefaults.cardColors(
-                containerColor = Color.White
-            ),
+            colors = CardDefaults.cardColors(containerColor = Color.White),
             shape = RoundedCornerShape(
                 topStart = 20.dp,
                 topEnd = 20.dp,
@@ -77,8 +77,7 @@ fun DountCard(
         ) {
             Column(
                 modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(top = 47.dp, start = 11.dp , end = 9.dp),
+                    .padding(top = 40.dp, start = 11.dp , end = 9.dp , bottom = 18.dp),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Text(
@@ -86,7 +85,8 @@ fun DountCard(
                     fontSize = 14.sp,
                     color = Color.Black.copy(alpha = .6f),
                     fontWeight = FontWeight.Medium,
-                    fontFamily = Inter
+                    fontFamily = Inter,
+                    letterSpacing = 0.sp,
                 )
                 Spacer(Modifier.height(10.dp))
                 Text(
@@ -96,18 +96,19 @@ fun DountCard(
                     fontWeight = FontWeight.SemiBold,
                     fontFamily = Inter,
                     textAlign = TextAlign.Center,
+                    letterSpacing = 0.sp,
                 )
             }
         }
-
         Image(
             painter = painterResource(id = dountCardDetails.image) ,
+            contentDescription = "donut image",
             modifier = Modifier
-                .align(Alignment.TopCenter)
-                .padding(end = 11.dp),
-            contentDescription = "donut image"
+                .align(Alignment.TopEnd)
+                .padding(end = 11.dp)
+                .height(112.dp),
+            contentScale = ContentScale.Crop,
         )
-
     }
 }
 

@@ -55,7 +55,7 @@ val dounts: List<DountsDetails> = listOf(
         oldPrice = 20
     ),
     DountsDetails(
-        image =  R.drawable.donut1 ,
+        image =  R.drawable.donut2 ,
         color = Color(0xFFFFC7D0) ,
         name = "Chocolate Glaze" ,
         description = "Moist and fluffy baked chocolate donuts full of chocolate flavor." ,
@@ -181,7 +181,7 @@ fun DountsItem(
 @Composable
 fun DountsItems(){
     LazyRow(
-        modifier = Modifier.fillMaxWidth(),
+        modifier = Modifier.fillMaxWidth().padding(start = 38.dp),
         horizontalArrangement = Arrangement.spacedBy(10.dp),
     ) {
         items(dounts) { item ->

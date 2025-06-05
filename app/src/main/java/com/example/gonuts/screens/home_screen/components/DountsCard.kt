@@ -47,7 +47,7 @@ val dountData: List<DountCardDetails> = listOf(
         price = 22
     ),
     DountCardDetails(
-        image =R.drawable.small_dount2,
+        image =R.drawable.small_donut3,
         name = "Strawberry ",
         price = 22
     )
@@ -114,7 +114,7 @@ fun DountCard(
 @Composable
 fun DountCards(){
     LazyRow(
-        modifier = Modifier.fillMaxWidth(),
+        modifier = Modifier.fillMaxWidth().padding(start = 38.dp),
         horizontalArrangement = Arrangement.spacedBy(21.dp),
     ) {
         items(dountData) { item ->

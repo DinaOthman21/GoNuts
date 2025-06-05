@@ -30,7 +30,7 @@ fun HomeHeader() {
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(start = 38.dp,end = 40.dp,top = 81.dp)
+            .padding(start = 38.dp,end = 30.dp,top = 61.dp)
     ) {
         Column(
             modifier = Modifier.weight(1f)

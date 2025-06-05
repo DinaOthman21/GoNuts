@@ -12,10 +12,12 @@ import com.example.gonuts.R
 
 
 @Composable
-fun BottomBar(){
+fun BottomBar(
+    modifier: Modifier = Modifier
+){
     Row(
         horizontalArrangement = Arrangement.SpaceBetween ,
-        modifier = Modifier.fillMaxWidth()
+        modifier = modifier.fillMaxWidth()
     ){
         Image(
             painter = painterResource(R.drawable.home),

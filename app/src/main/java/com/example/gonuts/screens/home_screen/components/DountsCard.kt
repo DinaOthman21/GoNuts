@@ -11,6 +11,9 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -109,9 +112,24 @@ fun DountCard(
 }
 
 @Composable
+fun DountCards(){
+    LazyRow(
+        modifier = Modifier.fillMaxWidth(),
+        horizontalArrangement = Arrangement.spacedBy(21.dp),
+    ) {
+        items(dountData) { item ->
+            DountCard(
+                dountCardDetails = item,
+            )
+        }
+    }
+}
+
+@Composable
 @Preview(showBackground = true)
 fun DountsCardPreview(){
-    DountCard(
+    DountCards()
+    /*DountCard(
         dountCardDetails = dountData[0]
-    )
+    )*/
 }

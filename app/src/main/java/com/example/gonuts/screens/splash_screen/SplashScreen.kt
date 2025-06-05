@@ -53,7 +53,7 @@ fun SplashScreen(){
         Box(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(top = 420.dp)
+                .padding(top = 451.dp)
         ){
             SplashColumn()
         }

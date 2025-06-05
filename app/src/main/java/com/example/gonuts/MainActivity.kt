@@ -18,8 +18,8 @@ class MainActivity : ComponentActivity() {
             GoNutsTheme {
                 val systemUiController: SystemUiController = rememberSystemUiController()
                 systemUiController.isSystemBarsVisible = false
-               // SplashScreen()
-                HomeScreen()
+                SplashScreen()
+                //HomeScreen()
             }
         }
     }

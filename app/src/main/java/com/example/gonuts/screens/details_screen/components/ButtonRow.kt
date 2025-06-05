@@ -29,7 +29,6 @@ fun ButtonRow(){
         modifier = Modifier
             .fillMaxWidth()
             .padding(
-                start = 40.dp,
                 end = 40.dp
             )
     ) {
